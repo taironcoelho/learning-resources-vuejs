@@ -23,7 +23,7 @@
                 <input v-model="link" id="link" name="link" type="url"/>
             </div>
             <div>
-                <base-button type="submit">Add Resource</base-button>
+                <base-button id="add-resource-btn" type="submit">Add Resource</base-button>
             </div>
         </form>
     </base-card>
@@ -52,9 +52,15 @@ export default {
         return;
       }
       this.addResource(this.title, this.description, this.link);
+      this.resetFields();
     },
     confirmError() {
       this.inputIsInvalid = false;
+    },
+    resetFields(){
+      this.title = '';
+      this.description = '';
+      this.link = '';
     }
   }
 }
