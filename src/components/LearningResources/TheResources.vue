@@ -27,12 +27,11 @@ export default {
       StoredResources,
       AddResource 
     },
-    computed: {
-        storedResButtonMode() {
-            return this.selectedTab === 'stored-resources' ? null : 'flat'
-        },
-        addResButtonMode() {
-            return this.selectedTab === 'add-resource' ? null : 'flat'
+    provide() {
+        return {
+            resources: this.storedResources,
+            addResource: this.addResource,
+            removeResource: this.removeResource
         }
     },
     data() {
@@ -54,11 +53,12 @@ export default {
             ]
         };
     },
-    provide() {
-        return {
-            resources: this.storedResources,
-            addResource: this.addResource,
-            removeResource: this.removeResource
+    computed: {
+        storedResButtonMode() {
+            return this.selectedTab === 'stored-resources' ? null : 'flat'
+        },
+        addResButtonMode() {
+            return this.selectedTab === 'add-resource' ? null : 'flat'
         }
     },
     methods: {
